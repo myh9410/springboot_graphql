@@ -4,7 +4,7 @@ import com.google.common.io.Resources;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -15,13 +15,12 @@ import java.nio.charset.StandardCharsets;
 
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 
+@RequiredArgsConstructor
 @Component
 public class GraphQLProvider {
 
     private GraphQL graphQL;
-
-    @Autowired
-    GraphQLDataFetchers graphQLDataFetchers;
+    private final GraphQLDataFetchers graphQLDataFetchers;
 
     @Bean
     public GraphQL graphQL() {
