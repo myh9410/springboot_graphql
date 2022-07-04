@@ -1,0 +1,18 @@
+type Schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    findByNo(no: ID): Board
+}
+
+type Mutation {
+    saveBoard(title: String, content: String): Board
+}
+
+type Board {
+    no: ID
+    title: String
+    content: String
+}
