@@ -5,16 +5,14 @@ import com.example.graphql.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    public Optional<Board> findByNo(Long no) {
-        return boardRepository.findById(no);
+    public Board getBoardByNo(Long no) {
+        return boardRepository.findById(no).orElseThrow();
     }
 
     public Board saveBoard(String title, String content) {

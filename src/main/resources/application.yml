@@ -1,3 +1,9 @@
+graphql:
+  servlet:
+    mapping: /graphql
+    cors-enabled: true
+    exception-handlers-enabled: true
+
 spring:
   datasource:
     url:

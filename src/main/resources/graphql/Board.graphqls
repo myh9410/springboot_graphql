@@ -1,0 +1,18 @@
+type Board {
+    no: ID
+    title: String
+    content: String
+}
+
+type Query {
+    getBoardByNo(no: ID): Board
+}
+
+type Mutation {
+    createBoard(title: String, content: String): Board!
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
