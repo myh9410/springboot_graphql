@@ -8,8 +8,14 @@ type Query {
     getBoardByNo(no: ID): Board
 }
 
+input BoardInput {
+    title: String
+    content: String
+}
+
+
 type Mutation {
-    createBoard(title: String, content: String): Board!
+    createBoard(input: BoardInput): Board!
 }
 
 schema {
