@@ -1,0 +1,20 @@
+type Item {
+    no: ID
+    name: String
+    type: String
+    price: Int
+}
+
+input ItemInput {
+    name: String
+    type: String
+    price: Int
+}
+
+#extend type Query {
+#    getItem(no: ID): Item
+#}
+
+#extend type Mutation {
+#    saveItem(input: ItemInput): Item!
+#}
