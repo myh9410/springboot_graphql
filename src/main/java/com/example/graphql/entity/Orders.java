@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.FetchType.*;
@@ -40,7 +41,7 @@ public class Orders {
     @JoinColumn(name = "member_no")
     private Member member;
 
-//    @OneToMany(mappedBy = "order")
-//    private List<OrderItems> orderItemsList;
+    @OneToMany(mappedBy = "order")
+    private List<OrderItems> orderItemsList = new ArrayList<>();
 
 }
