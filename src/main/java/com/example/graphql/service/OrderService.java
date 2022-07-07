@@ -14,7 +14,6 @@ public class OrderService {
     private final OrderCustomRepository orderCustomRepository;
     private final OrderRepository orderRepository;
 
-    @Transactional(readOnly = true)
     public Orders getOrderByNo(Long no) {
 //        Orders order = orderRepository.findById(no).orElseThrow(() -> {
 //            throw new RuntimeException("에러");

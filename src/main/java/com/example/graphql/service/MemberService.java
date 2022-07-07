@@ -14,7 +14,6 @@ public class MemberService {
     private final MemberCustomRepository memberCustomRepository;
     private final MemberRepository memberRepository;
 
-    @Transactional
     public Member getMemberByNo(Long no) {
 //        Member member = memberRepository.findById(no).orElseThrow(() -> {
 //            throw new RuntimeException("에러");
