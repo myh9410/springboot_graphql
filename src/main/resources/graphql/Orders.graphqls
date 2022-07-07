@@ -1,0 +1,17 @@
+type Orders {
+    no: ID
+    member: Member
+    order_num: String
+    order_date: String
+    status: OrderStatus
+}
+
+enum OrderStatus {
+    CANCEL
+    WAIT
+    CONFIRM
+}
+
+extend type Query {
+    getOrderByNo(no: ID): Orders!
+}
