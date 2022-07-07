@@ -1,0 +1,16 @@
+type Member {
+    no: ID
+    user_id: String
+    join_date: String
+    active: Active
+    orders: [Orders]
+}
+
+extend type Query {
+    getMemberByNo(no: ID): Member
+}
+
+enum Active {
+    Y
+    N
+}
