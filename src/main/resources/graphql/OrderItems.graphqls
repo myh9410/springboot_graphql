@@ -1,0 +1,9 @@
+type OrderItems {
+    no: ID
+    order: Orders
+#    item: Item
+}
+
+extend type Query {
+    getOrderItemsByNo(no: ID): OrderItems!
+}
