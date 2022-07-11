@@ -1,4 +1,4 @@
-package com.example.graphql.resolvers;
+package com.example.graphql.resolvers.mutation;
 
 import com.example.graphql.entity.Board;
 import com.example.graphql.service.BoardService;

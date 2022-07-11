@@ -1,4 +1,4 @@
-package com.example.graphql.resolvers;
+package com.example.graphql.resolvers.query;
 
 import com.example.graphql.entity.OrderItem;
 import com.example.graphql.service.OrderItemsService;

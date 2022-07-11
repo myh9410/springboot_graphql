@@ -1,8 +1,8 @@
 package com.example.graphql.service;
 
 import com.example.graphql.entity.OrderItem;
-import com.example.graphql.repository.OrderItemsCustomRepository;
-import com.example.graphql.repository.OrderItemsRepository;
+import com.example.graphql.repository.OrderItemCustomRepository;
+import com.example.graphql.repository.OrderItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class OrderItemsService {
 
-    private final OrderItemsCustomRepository orderItemsCustomRepository;
-    private final OrderItemsRepository orderItemsRepository;
+    private final OrderItemCustomRepository orderItemsCustomRepository;
+    private final OrderItemRepository orderItemsRepository;
 
     public OrderItem getOrderItemsByNo(Long no) {
 

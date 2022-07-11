@@ -5,13 +5,13 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class OrderItemsCustomRepository {
+public class OrderItemCustomRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
     private final QOrderItem orderItems = QOrderItem.orderItem;
     private final QOrder order = QOrder.order;
 
-    public OrderItemsCustomRepository(JPAQueryFactory jpaQueryFactory) {
+    public OrderItemCustomRepository(JPAQueryFactory jpaQueryFactory) {
         this.jpaQueryFactory = jpaQueryFactory;
     }
 

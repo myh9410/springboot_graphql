@@ -3,7 +3,7 @@ type Member {
     user_id: String
     join_date: String
     active: Active
-    orders: [Orders]
+    orders: [Order]
 }
 
 extend type Query {

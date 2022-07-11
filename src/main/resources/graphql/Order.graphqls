@@ -1,4 +1,4 @@
-type Orders {
+type Order {
     no: ID
     member: Member
     order_num: String
@@ -13,5 +13,5 @@ enum OrderStatus {
 }
 
 extend type Query {
-    getOrderByNo(no: ID): Orders!
+    getOrderByNo(no: ID): Order!
 }
