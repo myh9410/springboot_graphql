@@ -1,7 +1,7 @@
 type OrderItem {
     no: ID
     order: Order
-#    item: Item
+    item: Item
 }
 
 extend type Query {
