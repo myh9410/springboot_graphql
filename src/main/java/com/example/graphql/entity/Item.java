@@ -26,7 +26,7 @@ public class Item {
     @Column(name = "price")
     private int price;
 
-//    @OneToMany(mappedBy = "item")
-//    private List<OrderItems> orderItemsList;
+    @OneToMany(mappedBy = "item")
+    private List<OrderItem> orderItemsList;
 
 }
