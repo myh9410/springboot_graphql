@@ -11,9 +11,9 @@ input ItemInput {
     price: Int
 }
 
-#extend type Query {
-#    getItem(no: ID): Item
-#}
+extend type Query {
+    getItemByNo(no: ID): Item
+}
 
 #extend type Mutation {
 #    saveItem(input: ItemInput): Item!
