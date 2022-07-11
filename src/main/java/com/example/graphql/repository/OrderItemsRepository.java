@@ -1,8 +1,7 @@
 package com.example.graphql.repository;
 
-import com.example.graphql.entity.OrderItems;
-import com.example.graphql.entity.Orders;
+import com.example.graphql.entity.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OrderItemsRepository extends JpaRepository<OrderItems, Long> {
+public interface OrderItemsRepository extends JpaRepository<OrderItem, Long> {
 }

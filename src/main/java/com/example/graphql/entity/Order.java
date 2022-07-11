@@ -20,7 +20,7 @@ import static javax.persistence.FetchType.*;
 @Getter
 @Entity
 @Table(name = "orders")
-public class Orders {
+public class Order {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "no")
@@ -42,6 +42,6 @@ public class Orders {
     private Member member;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItems> orderItemsList = new ArrayList<>();
+    private List<OrderItem> orderItems = new ArrayList<>();
 
 }

@@ -13,7 +13,7 @@ import static javax.persistence.FetchType.*;
 @Getter
 @Entity
 @Table(name = "order_items")
-public class OrderItems {
+public class OrderItem {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "no")
@@ -21,7 +21,7 @@ public class OrderItems {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "order_no")
-    private Orders order;
+    private Order order;
 
 //    @ManyToOne(fetch = LAZY)
 //    @JoinColumn(name = "item_no")
