@@ -1,5 +1,6 @@
 package com.example.graphql.service;
 
+import com.example.graphql.dto.response.OrderItemResponse;
 import com.example.graphql.entity.OrderItem;
 import com.example.graphql.repository.OrderItemCustomRepository;
 import com.example.graphql.repository.OrderItemRepository;
@@ -13,11 +14,13 @@ public class OrderItemsService {
     private final OrderItemCustomRepository orderItemsCustomRepository;
     private final OrderItemRepository orderItemsRepository;
 
-    public OrderItem getOrderItemsByNo(Long no) {
+    public OrderItemResponse getOrderItemsByNo(Long no) {
 
         OrderItem orderItems = orderItemsCustomRepository.getOrderItemsByNo(no);
 
-        return orderItems;
+        return OrderItemResponse.builder()
+                .orderItem(orderItems)
+                .build();
     }
 
 }

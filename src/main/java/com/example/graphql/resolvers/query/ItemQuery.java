@@ -1,6 +1,6 @@
 package com.example.graphql.resolvers.query;
 
-import com.example.graphql.entity.Item;
+import com.example.graphql.dto.response.ItemResponse;
 import com.example.graphql.service.ItemService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ public class ItemQuery implements GraphQLQueryResolver {
 
     private final ItemService itemService;
 
-    public Item getItemByNo(Long no) {
+    public ItemResponse getItemByNo(Long no) {
         return itemService.getItemByNo(no);
     }
 
