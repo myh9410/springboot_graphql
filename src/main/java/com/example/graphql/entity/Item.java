@@ -3,6 +3,7 @@ package com.example.graphql.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString
@@ -27,6 +28,6 @@ public class Item {
     private int price;
 
     @OneToMany(mappedBy = "item")
-    private List<OrderItem> orderItemsList;
+    private List<OrderItem> orderItems = new ArrayList<>();
 
 }

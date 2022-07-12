@@ -3,6 +3,7 @@ type Item {
     name: String
     type: String
     price: Int
+    order_items: [OrderItem]
 }
 
 input ItemInput {

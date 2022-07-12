@@ -4,6 +4,7 @@ type Order {
     order_num: String
     order_date: String
     status: OrderStatus
+    order_items: [OrderItem]
 }
 
 enum OrderStatus {
