@@ -1,6 +1,6 @@
 package com.example.graphql.resolvers.query;
 
-import com.example.graphql.entity.Member;
+import com.example.graphql.dto.response.MemberResponse;
 import com.example.graphql.service.MemberService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ public class MemberQuery implements GraphQLQueryResolver {
 
     private final MemberService memberService;
 
-    public Member getMemberByNo(Long no) {
+    public MemberResponse getMemberByNo(Long no) {
         return memberService.getMemberByNo(no);
     }
 
