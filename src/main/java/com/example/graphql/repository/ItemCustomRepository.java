@@ -9,6 +9,7 @@ public class ItemCustomRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
     private final QItem item = QItem.item;
+    private final QOrderItem orderItem = QOrderItem.orderItem;
 
     public ItemCustomRepository(JPAQueryFactory jpaQueryFactory) {
         this.jpaQueryFactory = jpaQueryFactory;
@@ -16,6 +17,8 @@ public class ItemCustomRepository {
 
     public Item getItemByNo(Long no) {
         return jpaQueryFactory.selectFrom(item)
+                .leftJoin(item.orderItems, orderItem)
+                .fetchJoin()
                 .where(item.no.eq(no))
                 .fetchOne();
     }
