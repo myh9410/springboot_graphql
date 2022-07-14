@@ -1,18 +1,16 @@
-package com.example.graphql.repository;
+package com.example.graphql.repository.orderitem;
 
 import com.example.graphql.entity.*;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class OrderItemCustomRepository {
+public class OrderItemCustomRepositoryImpl implements OrderItemCustomRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
     private final QOrderItem orderItems = QOrderItem.orderItem;
     private final QOrder order = QOrder.order;
     private final QItem item = QItem.item;
 
-    public OrderItemCustomRepository(JPAQueryFactory jpaQueryFactory) {
+    public OrderItemCustomRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
         this.jpaQueryFactory = jpaQueryFactory;
     }
 

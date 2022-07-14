@@ -1,19 +1,17 @@
-package com.example.graphql.repository;
+package com.example.graphql.repository.member;
 
 import com.example.graphql.entity.Member;
 import com.example.graphql.entity.QMember;
 import com.example.graphql.entity.QOrder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class MemberCustomRepository {
+public class MemberCustomRepositoryImpl implements MemberCustomRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
     private final QMember member = QMember.member;
     private final QOrder order = QOrder.order;
 
-    public MemberCustomRepository(JPAQueryFactory jpaQueryFactory) {
+    public MemberCustomRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
         this.jpaQueryFactory = jpaQueryFactory;
     }
 
