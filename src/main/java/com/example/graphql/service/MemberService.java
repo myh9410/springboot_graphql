@@ -2,8 +2,7 @@ package com.example.graphql.service;
 
 import com.example.graphql.dto.response.MemberResponse;
 import com.example.graphql.entity.Member;
-import com.example.graphql.repository.MemberCustomRepository;
-import com.example.graphql.repository.MemberRepository;
+import com.example.graphql.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +10,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MemberService {
 
-    private final MemberCustomRepository memberCustomRepository;
     private final MemberRepository memberRepository;
 
     public MemberResponse getMemberByNo(Long no) {
-        Member member = memberCustomRepository.getMemberByNo(no);
+        Member member = memberRepository.getMemberByNo(no);
 
         //비즈니스 로직
 
