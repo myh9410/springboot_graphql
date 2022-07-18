@@ -7,6 +7,11 @@ type Order {
     order_items: [OrderItem]
 }
 
+input OrderInput {
+    order_num: String
+    status: OrderStatus
+}
+
 enum OrderStatus {
     CANCEL
     WAIT
@@ -15,4 +20,12 @@ enum OrderStatus {
 
 extend type Query {
     getOrderByNo(no: ID): Order!
+    getAllOrders: [Order]
+    getOrdersByStatus(status: OrderStatus): [Order]
+}
+
+extend type Mutation {
+    saveOrders(input: OrderInput): Order
+    putOrders(input: OrderInput): Order
+    deleteOrders(input: OrderInput): Order
 }

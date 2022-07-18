@@ -6,8 +6,20 @@ type Member {
     orders: [Order]
 }
 
+input MemberInput {
+    user_id: String
+    active: Active
+}
+
 extend type Query {
     getMemberByNo(no: ID): Member
+    getAllMembers: [Member]
+}
+
+extend type Mutation {
+    saveMember(input: MemberInput): ID
+    putMember(input: MemberInput): ID
+    deleteMember(input: MemberInput): Boolean
 }
 
 enum Active {
