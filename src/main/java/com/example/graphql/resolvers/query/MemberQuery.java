@@ -6,6 +6,8 @@ import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class MemberQuery implements GraphQLQueryResolver {
@@ -14,6 +16,10 @@ public class MemberQuery implements GraphQLQueryResolver {
 
     public MemberResponse getMemberByNo(Long no) {
         return memberService.getMemberByNo(no);
+    }
+
+    public List<MemberResponse> getAllMembers() {
+        return memberService.getAllMembers();
     }
 
 }
