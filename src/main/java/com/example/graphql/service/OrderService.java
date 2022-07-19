@@ -1,10 +1,15 @@
 package com.example.graphql.service;
 
+import com.example.graphql.dto.enums.OrderStatus;
+import com.example.graphql.dto.request.OrderRequest;
 import com.example.graphql.dto.response.OrderResponse;
 import com.example.graphql.entity.Order;
 import com.example.graphql.repository.order.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -26,4 +31,39 @@ public class OrderService {
                 .build();
     }
 
+    public List<OrderResponse> getAllOrders() {
+        List<Order> orders = orderRepository.getAllOrders();
+
+        //비즈니스 로직
+
+        return orders.stream()
+                .map(order -> OrderResponse.builder().order(order).build())
+                .collect(Collectors.toList());
+    }
+
+    public List<OrderResponse> getOrdersByStatus(OrderStatus status) {
+        List<Order> orders = orderRepository.getOrdersByStatus(status);
+
+        //비즈니스 로직
+
+        return orders.stream()
+                .map(order -> OrderResponse.builder().order(order).build())
+                .collect(Collectors.toList());
+    }
+
+    public Long saveOrder(OrderRequest orderRequest) {
+        Order order = orderRepository.save(orderRequest.toEntity());
+
+        return order.getNo();
+    }
+
+    public Long putOrder(OrderRequest orderRequest) {
+        Order order = orderRepository.save(orderRequest.toEntity());
+
+        return order.getNo();
+    }
+
+    public Boolean deleteOrder(OrderRequest orderRequest) {
+        return true;
+    }
 }

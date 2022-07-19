@@ -5,6 +5,8 @@ import com.example.graphql.entity.QMember;
 import com.example.graphql.entity.QOrder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
+import java.util.List;
+
 public class MemberCustomRepositoryImpl implements MemberCustomRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
@@ -23,4 +25,9 @@ public class MemberCustomRepositoryImpl implements MemberCustomRepository {
                 .fetchOne();
     }
 
+    @Override
+    public List<Member> getAllMembers() {
+        return jpaQueryFactory.selectFrom(member)
+                .fetch();
+    }
 }

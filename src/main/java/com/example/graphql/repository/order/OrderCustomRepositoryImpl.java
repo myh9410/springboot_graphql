@@ -1,21 +1,22 @@
 package com.example.graphql.repository.order;
 
+import com.example.graphql.dto.enums.OrderStatus;
 import com.example.graphql.entity.Order;
 import com.example.graphql.entity.QMember;
 import com.example.graphql.entity.QOrder;
 import com.example.graphql.entity.QOrderItem;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
+@RequiredArgsConstructor
 public class OrderCustomRepositoryImpl implements OrderCustomRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
     private final QOrder order = QOrder.order;
     private final QMember member = QMember.member;
     private final QOrderItem orderItem = QOrderItem.orderItem;
-
-    public OrderCustomRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
-        this.jpaQueryFactory = jpaQueryFactory;
-    }
 
     public Order getOrderByNo(Long no) {
         return jpaQueryFactory.selectFrom(order)
@@ -34,4 +35,25 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository {
                 .fetchOne();
     }
 
+    public List<Order> getAllOrders() {
+        return jpaQueryFactory.selectFrom(order)
+                .distinct()
+                .join(order.member, member)
+                .fetchJoin()
+                .leftJoin(order.orderItems, orderItem)
+                .fetchJoin()
+                .orderBy(order.no.asc())    //오름차순 정렬
+                .fetch();
+    }
+
+    public List<Order> getOrdersByStatus(OrderStatus status) {
+        return jpaQueryFactory.selectFrom(order)
+                .distinct()     //SQL의 DISTINCT & ENTITY의 DISTINCT를 전부 다 수행한다.
+                .join(order.member, member)
+                .fetchJoin()
+                .leftJoin(order.orderItems, orderItem)
+                .fetchJoin()
+                .where(order.status.eq(status))
+                .fetch();
+    }
 }
