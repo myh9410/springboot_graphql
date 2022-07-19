@@ -15,7 +15,7 @@ input ItemInput {
 extend type Query {
     getItemByNo(no: ID): Item
     getAllItems: [Item]
-    getItemsByType(type: String): [Item]
+    getItemsInType(type: String): [Item]
 }
 
 extend type Mutation {

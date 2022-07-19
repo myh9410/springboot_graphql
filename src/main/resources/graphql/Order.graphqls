@@ -25,7 +25,7 @@ extend type Query {
 }
 
 extend type Mutation {
-    saveOrders(input: OrderInput): Order
-    putOrders(input: OrderInput): Order
-    deleteOrders(input: OrderInput): Order
+    saveOrder(input: OrderInput): ID
+    putOrder(input: OrderInput): ID
+    deleteOrder(input: OrderInput): Boolean
 }
