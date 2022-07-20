@@ -70,6 +70,7 @@ public class OrderService {
 
     }
 
+    @Transactional
     public Boolean deleteOrder(Long no) {
         Long deleteRows = orderRepository.deleteOrderByNo(no);
 
