@@ -7,6 +7,7 @@ import com.example.graphql.entity.Order;
 import com.example.graphql.repository.order.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,16 +52,22 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public Long saveOrder(OrderRequest orderRequest) {
         Order order = orderRepository.save(orderRequest.toEntity());
 
         return order.getNo();
     }
 
+    @Transactional
     public Long putOrder(OrderRequest orderRequest) {
-        Order order = orderRepository.save(orderRequest.toEntity());
 
-        return order.getNo();
+        Long updatedRows = orderRepository.updateOrderByNo(orderRequest);
+
+        System.out.println("update - updatedRows : " + updatedRows);
+
+        return orderRequest.getNo();
+
     }
 
     public Boolean deleteOrder(OrderRequest orderRequest) {

@@ -11,13 +11,15 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderRequest {
-    private String order_num;
+
+    private Long no;
+    private String orderNum;
     private OrderStatus status;
 
     public Order toEntity() {
         return Order.builder()
                 .member(Member.builder().no(1L).build())
-                .orderNum(order_num)
+                .orderNum(orderNum)
                 .status(status)
                 .build();
     }

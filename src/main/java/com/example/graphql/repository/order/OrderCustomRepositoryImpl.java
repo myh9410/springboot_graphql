@@ -1,11 +1,16 @@
 package com.example.graphql.repository.order;
 
 import com.example.graphql.dto.enums.OrderStatus;
+import com.example.graphql.dto.request.OrderRequest;
 import com.example.graphql.entity.Order;
 import com.example.graphql.entity.QMember;
 import com.example.graphql.entity.QOrder;
 import com.example.graphql.entity.QOrderItem;
+import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.querydsl.jpa.impl.JPAUpdateClause;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -56,4 +61,21 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository {
                 .where(order.status.eq(status))
                 .fetch();
     }
+
+    public Long updateOrderByNo(OrderRequest orderRequest) {
+
+        JPAUpdateClause jpaUpdateClause = jpaQueryFactory.update(order);
+
+        if (orderRequest.getOrderNum() != null) {
+            jpaUpdateClause.set(order.orderNum, orderRequest.getOrderNum());
+        }
+
+        if (orderRequest.getStatus() != null) {
+            jpaUpdateClause.set(order.status, orderRequest.getStatus());
+        }
+
+        return jpaUpdateClause.where(order.no.eq(orderRequest.getNo()))
+                .execute();
+    }
+
 }
