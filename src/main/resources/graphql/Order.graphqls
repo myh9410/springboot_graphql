@@ -1,14 +1,15 @@
 type Order {
     no: ID
     member: Member
-    order_num: String
-    order_date: String
+    orderNum: String
+    orderDate: String
     status: OrderStatus
-    order_items: [OrderItem]
+    orderItems: [OrderItem]
 }
 
 input OrderInput {
-    order_num: String
+    no: ID!
+    orderNum: String
     status: OrderStatus
 }
 

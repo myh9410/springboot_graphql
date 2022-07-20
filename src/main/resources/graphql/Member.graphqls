@@ -1,13 +1,13 @@
 type Member {
     no: ID
-    user_id: String
-    join_date: String
+    userId: String
+    joinDate: String
     active: Active
     orders: [Order]
 }
 
 input MemberInput {
-    user_id: String
+    userId: String
     active: Active
 }
 
