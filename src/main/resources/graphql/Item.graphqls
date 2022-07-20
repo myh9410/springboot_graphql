@@ -14,12 +14,12 @@ input ItemInput {
 
 extend type Query {
     getItemByNo(no: ID): Item
-#    getAllItems: [Item]
-#    getItemsInType(type: String): [Item]
+    getAllItems: [Item]
+    getItemsInType(type: String): [Item]
 }
 
-#extend type Mutation {
-#    saveItem(input: ItemInput): ID
-#    putItem(input: ItemInput): ID
-#    deleteItem(input: ItemInput): Boolean
-#}
+extend type Mutation {
+    saveItem(input: ItemInput): ID
+    putItem(input: ItemInput): ID
+    deleteItem(input: ItemInput): Boolean
+}

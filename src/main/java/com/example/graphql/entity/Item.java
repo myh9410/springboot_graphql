@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ToString
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter

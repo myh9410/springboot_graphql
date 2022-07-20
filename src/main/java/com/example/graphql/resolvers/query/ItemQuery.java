@@ -6,6 +6,8 @@ import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class ItemQuery implements GraphQLQueryResolver {
@@ -14,6 +16,14 @@ public class ItemQuery implements GraphQLQueryResolver {
 
     public ItemResponse getItemByNo(Long no) {
         return itemService.getItemByNo(no);
+    }
+
+    public List<ItemResponse> getAllItems() {
+        return itemService.getAllItems();
+    }
+
+    public List<ItemResponse> getItemsInType(String type) {
+        return itemService.getItemsInType(type);
     }
 
 }
