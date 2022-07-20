@@ -6,9 +6,6 @@ import com.example.graphql.entity.Order;
 import com.example.graphql.entity.QMember;
 import com.example.graphql.entity.QOrder;
 import com.example.graphql.entity.QOrderItem;
-import com.querydsl.core.types.Path;
-import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAUpdateClause;
 import lombok.RequiredArgsConstructor;
@@ -75,6 +72,12 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository {
         }
 
         return jpaUpdateClause.where(order.no.eq(orderRequest.getNo()))
+                .execute();
+    }
+
+    public Long deleteOrderByNo(Long no) {
+        return jpaQueryFactory.delete(order)
+                .where(order.no.eq(no))
                 .execute();
     }
 

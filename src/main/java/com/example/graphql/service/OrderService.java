@@ -70,7 +70,11 @@ public class OrderService {
 
     }
 
-    public Boolean deleteOrder(OrderRequest orderRequest) {
+    public Boolean deleteOrder(Long no) {
+        Long deleteRows = orderRepository.deleteOrderByNo(no);
+
+        System.out.println("delete - deleteRows : " + deleteRows);
+
         return true;
     }
 }

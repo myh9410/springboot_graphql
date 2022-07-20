@@ -20,8 +20,8 @@ public class OrderMutation implements GraphQLMutationResolver {
         return orderService.putOrder(orderRequest);
     }
 
-    public Boolean deleteOrder(OrderRequest orderRequest) {
-        return orderService.deleteOrder(orderRequest);
+    public Boolean deleteOrder(Long no) {
+        return orderService.deleteOrder(no);
     }
 
 }

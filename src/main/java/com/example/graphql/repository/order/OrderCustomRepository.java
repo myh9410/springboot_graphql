@@ -16,4 +16,6 @@ public interface OrderCustomRepository {
     List<Order> getOrdersByStatus(OrderStatus status);
 
     public Long updateOrderByNo(OrderRequest orderRequest);
+
+    public Long deleteOrderByNo(Long no);
 }
