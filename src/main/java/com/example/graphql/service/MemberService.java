@@ -6,6 +6,7 @@ import com.example.graphql.entity.Member;
 import com.example.graphql.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +37,7 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public Long saveMember(MemberRequest memberRequest) {
         Member member = memberRepository.save(memberRequest.toEntity());
 
@@ -44,22 +46,22 @@ public class MemberService {
         return member.getNo();
     }
 
-    //todo
+    @Transactional
     public Long putMember(MemberRequest memberRequest) {
-        Member member = memberRepository.save(memberRequest.toEntity());
+        Long updatedRows = memberRepository.updateMemberByNo(memberRequest);
 
-        //비즈니스 로직
+        System.out.println("update - updatedRows : " + updatedRows);
 
-        return member.getNo();
+        return memberRequest.getNo();
     }
 
-    //todo
-    public Long deleteMember(MemberRequest memberRequest) {
-        Member member = memberRepository.save(memberRequest.toEntity());
+    @Transactional
+    public Boolean deleteMember(Long no) {
+        Long deleteRows = memberRepository.deleteMemberByNo(no);
 
-        //비즈니스 로직
+        System.out.println("delete - deleteRows : " + deleteRows);
 
-        return member.getNo();
+        return true;
     }
 
 }

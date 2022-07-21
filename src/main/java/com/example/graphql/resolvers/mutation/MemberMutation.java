@@ -20,8 +20,8 @@ public class MemberMutation implements GraphQLMutationResolver {
         return memberService.saveMember(memberRequest);
     }
 
-    public Boolean deleteMember(MemberRequest memberRequest) {
-        return true;
+    public Boolean deleteMember(Long no) {
+        return memberService.deleteMember(no);
     }
 
 }

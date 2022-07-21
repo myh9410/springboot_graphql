@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberRequest {
+    private Long no;
     private String userId;
     private Active active;
 
