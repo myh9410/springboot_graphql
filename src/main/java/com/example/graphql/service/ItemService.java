@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,22 +25,40 @@ public class ItemService {
     }
 
     public List<ItemResponse> getAllItems() {
-        return null;
+        List<Item> items = itemRepository.getAllItems();
+
+        return items.stream()
+                .map(item -> ItemResponse.builder().item(item).build())
+                .collect(Collectors.toList());
     }
 
     public List<ItemResponse> getItemsInType(String type) {
-        return null;
+        List<Item> items = itemRepository.getItemsInType(type);
+
+        return items.stream()
+                .map(item -> ItemResponse.builder().item(item).build())
+                .collect(Collectors.toList());
     }
 
     public Long saveItem(ItemRequest itemRequest) {
-        return null;
+        Item item = itemRepository.save(itemRequest.toEntity());
+
+        return item.getNo();
     }
 
     public Long putItem(ItemRequest itemRequest) {
-        return null;
+        Long updateRows = itemRepository.updateItemByNo(itemRequest);
+
+        System.out.println("update - updatedRows : " + updateRows);
+
+        return itemRequest.getNo();
     }
 
     public Boolean deleteItem(Long no) {
-        return null;
+        Long deleteRows = itemRepository.deleteItemByNo(no);
+
+        System.out.println("delete - deleteRows : " + deleteRows);
+
+        return true;
     }
 }
