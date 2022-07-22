@@ -19,7 +19,7 @@ extend type Query {
 extend type Mutation {
     saveMember(input: MemberInput): ID
     putMember(input: MemberInput): ID
-    deleteMember(input: MemberInput): Boolean
+    deleteMember(no: ID): Boolean
 }
 
 enum Active {
