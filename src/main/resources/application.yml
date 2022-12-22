@@ -6,9 +6,29 @@ graphql:
 
 spring:
   datasource:
-    url:
-    username:
-    password:
-    driver-class-name:
+    url: jdbc:mysql://localhost/board
+    username: root
+    password: moon9494
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
+    properties:
+      hibernate:
+        default_batch_fetch_size: 10
+        format_sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, env, health
+    enabled-by-default: false #기본 경로는 전부 비활성화 처리하고
+  endpoint:                   #사용할 end-point만 화이트 리스트의 형태로 관리한다.
+    info:
+      enabled: true
+    env:
+      enabled: true
+    health:
+      enabled: true
+  server:
+    port: 8081 #actuator 운영 포트는 서비스 운영 포트와 다른 포트로 구성한다.
